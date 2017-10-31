@@ -1,0 +1,10 @@
+@import 'colors';
+@import 'fonts';
+@import 'mixins';
+@import 'reset';
+
+body {
+  margin: 0;
+  padding: 0;
+  background: url("/img/600x400.png") no-repeat;
+}

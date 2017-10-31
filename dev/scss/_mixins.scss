@@ -1,0 +1,55 @@
+$breakpoints: (
+  'xsmall':   375px,
+  'small':    480px,
+  'medium':   800px,
+  'large':    1025px,
+  'x-large':  1281px
+);
+
+@function breakpoint($breakpoint-name) {
+  $breakpoint-value: map-get($breakpoints, $breakpoint-name);
+
+  @if $breakpoint-value {
+    @return $breakpoint-value;
+  }
+
+  @warn "Breakpoint '#{$breakpoint-name}' not found in $breakpoints";
+}
+
+// Exemplo: @include respond-above('small');
+@mixin respond-above($breakpoint-name) {
+  $breakpoint-value: breakpoint($breakpoint-name) + 1;
+
+  @if $breakpoint-value {
+    @media screen and (min-width: $breakpoint-value) {
+      @content;
+    }
+  }
+}
+
+// Exemplo: @include respond('small');
+@mixin respond($breakpoint-name) {
+  $breakpoint-value: breakpoint($breakpoint-name);
+
+  @if $breakpoint-value {
+    @media screen and (max-width: $breakpoint-value) {
+      @content;
+    }
+  }
+}
+
+/*** clearfix
+--------------- */
+@mixin clearfix {
+  *zoom: 1;
+
+  &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
