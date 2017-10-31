@@ -3,8 +3,14 @@
 @import 'mixins';
 @import 'reset';
 
+@import 'header';
+
 body {
   margin: 0;
   padding: 0;
-  background: url("/img/600x400.png") no-repeat;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
 }
