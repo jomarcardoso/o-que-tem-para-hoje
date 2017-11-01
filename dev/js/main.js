@@ -10,31 +10,32 @@
 
 var scrollerTopMargin = $("#fita").offset().top;
 $(window).scroll(function(){
-    var c = $(window).scrollTop();
-    var d = $("#fita");
-    if (c > scrollerTopMargin) {
-        d.css({ position: "fixed", top: "0px", left: "0px", right: "0px" });
-    }
-    else if (c <= scrollerTopMargin)
-    {
-        d.css({ position: "relative", top: ""   });
-    }
+  var c = $(window).scrollTop();
+  var d = $("#fita");
+  if (c > scrollerTopMargin) {
+    d.css({ position: "fixed", top: "0px", left: "0px", right: "0px" });
+  }
+  else if (c <= scrollerTopMargin)
+  {
+    d.css({ position: "relative", top: ""   });
+  }
 });
 
 
 $('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    nav:true,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:3
-        },
-        1000:{
-            items:5
-        }
+  autoplay: true,
+  loop:true,
+  margin:10,
+  nav:true,
+  responsive:{
+    0:{
+      items:1
+    },
+    600:{
+      items:1
+    },
+    1000:{
+      items:1
     }
+  }
 })
