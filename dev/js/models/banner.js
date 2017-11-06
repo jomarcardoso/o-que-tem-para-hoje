@@ -1,4 +1,4 @@
-ContactManager.Models.Banner = Backbone.Model.extend({
+Manage.Models.Banner = Backbone.Model.extend({
 
   defaults: {
     nome: null,

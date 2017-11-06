@@ -7,19 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <!-- <link rel="stylesheet" type="text/css" href="/css/owl.carousel.min.css"> -->
   <link rel="stylesheet" type="text/css" href="/css/main.css">
-  <script src="/js/main.js"></script>
   <title>HOTSITES - TEMPLATE</title>
-
+  <script src="vendor/jquery/dist/jquery.min.js" charset="utf-8"></script>
 </head>
 
 <body>
   <header>
     <div class="header__banner container">
-      <div class="owl-carousel">
-          <div class="item"><img src="http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banner-home.jpg" alt=""></div>
-          <div class="item"><img src="http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banners_ingressos_1100x430px-2.jpg" alt=""></div>
-          <img src="http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banners_1100x160px.jpg" alt="">
-          <img src="http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Oktoberfest_Site_banners_1100x430px2-2.jpg" alt="">
+      <div class="header__banner__carousel owl-carousel">
+        <!-- <div class="item"><img src="http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banner-home.jpg" alt=""></div>
+        <div class="item"><img src="http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banners_ingressos_1100x430px-2.jpg" alt=""></div>
+        <img src="http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banners_1100x160px.jpg" alt="">
+        <img src="http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Oktoberfest_Site_banners_1100x430px2-2.jpg" alt=""> -->
       </div>
     </div>
     <div class="header__fita" id="fita">
@@ -41,11 +40,36 @@
   <footer></footer>
   <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js" charset="utf-8"></script> -->
-  <script src="vendor/jquery/dist/jquery.min.js" charset="utf-8"></script>
+
   <script src="vendor/underscore/underscore-min.js" charset="utf-8"></script>
   <script src="vendor/backbone/backbone-min.js" charset="utf-8"></script>
   <script src="js/vendor/owl.carousel.min.js"></script>
   <!-- <script src="/js/requestService.js"></script> -->
+
+  <script src="/js/app.js" charset="utf-8"></script>
+  <script src="/js/models/banner.js" charset="utf-8"></script>
+  <script src="/js/collections/banner.js" charset="utf-8"></script>
+  <script src="/js/views/banner.js" charset="utf-8"></script>
+
+
+  <script>
+  Manage.start({
+    banners: [
+      {
+        nome: 'oktoberfest',
+        descricao: 'uma festa bem legal',
+        img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banners_ingressos_1100x430px-2.jpg'
+      },
+      {
+        nome: 'oktoberfest',
+        descricao: 'uma festa bem legal',
+        img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banner-home.jpg'
+      }
+    ]
+  })
+  </script>
+
   <script src="/js/main.js"></script>
+
 </body>
 </html>

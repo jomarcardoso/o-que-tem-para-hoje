@@ -1,6 +1,6 @@
-ContactManager.Views.Banner = Backbone.View.extend({
+Manage.Views.Banner = Backbone.View.extend({
 
-  template: _.template('<img src="<%- img %>" alt="<%- nome -%>">'),
+  template: _.template('<img src="<%- img %>" alt="<%- nome %>">'),
 
   className: 'item',
 
