@@ -12,10 +12,7 @@
 
 $(function(){
 
-  console.log(document)
-
   var scrollerTopMargin = $("#fita").offset().top;
-  console.log(scrollerTopMargin)
   $(window).scroll(function(){
     var c = $(window).scrollTop();
     var d = $("#fita");

@@ -2,18 +2,15 @@ window.Manage = {
   Models: {},
   Collections: {},
   Views: {},
+  Router: function(){},
 
   start: function(data) {
-    var bannerCollection = new Manage.Collections.Banner(data.banners);
+    router = new Manage.Router();
 
-    console.log(bannerCollection.models[0].attributes)
+    router.on('route:home', function() {
+      BannerController(data.banners);
+    });
 
-    bannerCollection.each(function(m) {
-      var bannerView = new Manage.Views.Banner({
-        // collection: bannerCollection
-        model: m
-      });
-      $('.header__banner__carousel').append(bannerView.render().$el);
-    })
+    Backbone.history.start();
   }
 }
