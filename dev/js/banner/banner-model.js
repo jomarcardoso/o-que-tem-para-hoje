@@ -1,4 +1,4 @@
-Manage.Models.Banner = Backbone.Model.extend({
+app.Models.Banner = Backbone.Model.extend({
 
   defaults: {
     nome: null,

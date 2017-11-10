@@ -1,3 +1,3 @@
-Manage.Collections.Banner = Backbone.Collection.extend({
-  model: Manage.Models.Banner
+app.Collections.Banner = Backbone.Collection.extend({
+  model: app.Models.Banner
 });

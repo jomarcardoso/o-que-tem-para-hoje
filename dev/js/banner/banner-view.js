@@ -1,7 +1,6 @@
-Manage.Views.Banner = Backbone.View.extend({
+app.Views.BannerItem = Backbone.View.extend({
 
   template: _.template('<img src="<%- img %>" alt="<%- nome %>">'),
-
   className: 'item',
 
   render: function() {
