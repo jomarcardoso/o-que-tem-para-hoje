@@ -14,3 +14,30 @@ window.Manage = {
     Backbone.history.start();
   }
 }
+
+var oi = Backbone.Model.extend({
+  defaults: {
+    name: null,
+    tel: null,
+    email: null,
+    avatar: null
+  },
+
+  initialize: function() {
+    this.on('change', function() {
+        console.log('oi')
+      }
+    )
+  },
+
+  validate: function(attr) {
+    if(!attr.name) {
+      console.log('dont do this')
+    }
+  },
+
+  urlRoot : '/',
+
+  localStorage: new Backbone.LocalStorage('books')
+
+});
