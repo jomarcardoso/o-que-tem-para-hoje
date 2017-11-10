@@ -3,8 +3,9 @@ app.Views.Banner = Backbone.View.extend({
   tagName: 'header__banner',
   template: _.template($('#header__banner').html()),
 
-  initialize: function() {
-    this.collection = new app.Collections.Banner(this.data.banners);
+  initialize: function(data) {
+    this.collection = new app.Collections.Banner(this.data.banners)
+    this.render(data.container)
   },
 
   renderOne(model) {
@@ -12,7 +13,6 @@ app.Views.Banner = Backbone.View.extend({
       model: model
     });
     $('.header__banner__carousel').append(bannerView.render().$el);
-
     // this.$el.append(bannerView.render().$el);
   },
 
@@ -20,8 +20,12 @@ app.Views.Banner = Backbone.View.extend({
     var html = this.template
     this.$el.html(html)
     container.prepend(html)
-    this.collection.each(this.renderOne, this);
+    this.renderChilds()
     return this
+  },
+
+  renderChilds() {
+    this.collection.each(this.renderOne, this);
   },
 
   data: {

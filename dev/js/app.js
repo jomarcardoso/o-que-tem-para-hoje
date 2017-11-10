@@ -42,8 +42,8 @@ app.Views.Header = Backbone.View.extend({
   initialize: function() {
     self = this;
     router.on('route:home', function() {
-      var bannerVi = new app.Views.Banner()
-      bannerVi.render(self.$el)
+      var bannerVi = new app.Views.Banner({container: self.$el})
+      // bannerVi.render(self.$el)
       // var html = bannerVi.render().$el
       // self.$el.prepend(html)
       // $('header').prepend(html)
