@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <!-- <link rel="stylesheet" type="text/css" href="/css/owl.carousel.min.css"> -->
-  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/css.css">
   <title>HOTSITES - TEMPLATE</title>
   <script src="vendor/jquery/dist/jquery.min.js" charset="utf-8"></script>
 </head>
@@ -35,10 +35,16 @@
     <footer></footer>
   </div>
 
-  <template type="text/template" id="header__banner">
+  <script type="text/template" id="header__banner">
     <div class="header__banner__carousel owl-carousel">
     </div>
-  </template>
+    <div class="vazia"></div>
+  </script>
+
+  <script type="text/template" id="home-prateleira">
+    <h2 class="prateleira__titulo"><%= titulo %></h2>
+    <div class="prateleira__carousel owl-carousel"></div>
+  </script>
 
   <script src="vendor/underscore/underscore-min.js" charset="utf-8"></script>
   <script src="vendor/backbone/backbone-min.js" charset="utf-8"></script>
@@ -46,6 +52,7 @@
   <script src="vendor/owl.carousel.min.js"></script>
   <!-- <script src="/js/requestService.js"></script> -->
 
+  <script src="/js/main.js"></script>
   <script src="/js/app.js" charset="utf-8"></script>
   <script src="/js/router.js" charset="utf-8"></script>
 
@@ -53,6 +60,7 @@
   <script src="/js/banner/banner-model.js" charset="utf-8"></script>
   <script src="/js/banner/banner-collection.js" charset="utf-8"></script>
   <script src="/js/banner/banner-view.js" charset="utf-8"></script>
+  <script src="/js/prateleira/prateleira-view.js" charset="utf-8"></script>
 
 
 
@@ -83,7 +91,7 @@
   })
   </script>
 
-  <script src="/js/main.js"></script>
+
 
 </body>
 </html>

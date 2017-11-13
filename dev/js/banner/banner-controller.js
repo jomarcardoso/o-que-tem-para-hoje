@@ -1,11 +1,10 @@
 app.Views.Banner = Backbone.View.extend({
 
-  tagName: 'header__banner',
+  className: 'header__banner',
   template: _.template($('#header__banner').html()),
 
-  initialize: function(data) {
+  initialize: function() {
     this.collection = new app.Collections.Banner(this.data.banners)
-    this.render(data.container)
   },
 
   renderOne(model) {
@@ -13,14 +12,11 @@ app.Views.Banner = Backbone.View.extend({
       model: model
     });
     $('.header__banner__carousel').append(bannerView.render().$el);
-    // this.$el.append(bannerView.render().$el);
   },
 
-  render(container) {
+  render() {
     var html = this.template
     this.$el.html(html)
-    container.prepend(html)
-    this.renderChilds()
     return this
   },
 
@@ -31,21 +27,25 @@ app.Views.Banner = Backbone.View.extend({
   data: {
     banners: [
       {
+        id: 1,
         nome: 'oktoberfest',
         descricao: 'uma festa bem legal',
         img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banners_ingressos_1100x430px-2.jpg'
       },
       {
+        id: 2,
         nome: 'oktoberfest',
         descricao: 'uma festa bem legal',
         img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banner-home.jpg'
       },
       {
+        id: 3,
         nome: 'oktoberfest',
         descricao: 'uma festa bem legal',
         img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banners_1100x160px.jpg'
       },
       {
+        id: 4,
         nome: 'oktoberfest',
         descricao: 'uma festa bem legal',
         img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Oktoberfest_Site_banners_1100x430px2-2.jpg'
