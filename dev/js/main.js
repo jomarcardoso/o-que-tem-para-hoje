@@ -16,6 +16,8 @@ $(function(){
 
   carrossel()
 
+  $('header').on('resize', scroller)
+
 })
 
 function carrossel() {

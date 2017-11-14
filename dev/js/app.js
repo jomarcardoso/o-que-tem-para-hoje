@@ -25,30 +25,48 @@ var app = new App();
 app.Views.Header = Backbone.View.extend({
   el: 'header',
 
+  bannerView: null,
+
   initialize: function() {
     let self = this;
 
     router.on('route:home', function() {
       // banner
-
-      var bannerVi = new app.Views.Banner()
-      self.$el.prepend(bannerVi.render().$el)
-      bannerVi.renderChilds();
+      // if(!self.bannerView) {
+      //
+      //   self.bannerView = new app.Views.Banner()
+      // }
+      self.bannerView = new app.Views.Banner()
+      self.$el.prepend(self.bannerView.render().$el)
+      self.bannerView.renderChilds();
       scroller()
+    })
+
+    router.on('route:fiestas', function() {
+      self.bannerView.remove()
     })
   }
 })
+
+
 
 app.Views.Main = Backbone.View.extend({
 
   el: 'main',
 
+  prateleiraView: null,
+
   initialize: function() {
     let self = this;
+
     router.on('route:home', function() {
-      var prateleiraView = new app.Views.Prateleira()
-      self.$el.prepend(prateleiraView.render().$el)
-      prateleiraView.renderChilds();
+      self.prateleiraView = new app.Views.Prateleira()
+      self.$el.prepend(self.prateleiraView.render().$el)
+      self.prateleiraView.renderChilds();
+    })
+
+    router.on('route:fiestas', function() {
+      self.prateleiraView.remove()
     })
   }
 })

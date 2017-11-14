@@ -23,7 +23,8 @@ app.Views.Prateleira = Backbone.View.extend({
   },
 
   renderChilds() {
-    this.collection.each(this.renderOne, this);
+    this.collection.each(this.renderOne, this)
+    carrossel()
   },
 
   data: {
