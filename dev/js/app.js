@@ -19,11 +19,16 @@ window.App = Backbone.View.extend({
     window.stade = '';
     window.eventoId = '';
 
+    $('#o-que-tem-para-hoje').on('click', function() {
+      Backbone.history.navigate('', {trigger: true})
+    })
+
 
 
     router.on('route:detalhe', function() {
       var model = new app.Models.Detalhe({id: window.eventoId})
       header.paginaDetalhe(model);
+      main.paginaDetalhe(model);
     })
 
     Backbone.history.start();
@@ -41,6 +46,10 @@ app.Views.Header = Backbone.View.extend({
     let self = this;
 
     router.on('route:home', function() {
+
+      if(self.bannerEstatic) {
+        self.bannerEstatic.remove()
+      }
       self.bannerCarousel = new app.Views.Banner({collection: true})
       self.$el.prepend(self.bannerCarousel.render().$el)
       self.bannerCarousel.renderChilds();
@@ -88,6 +97,7 @@ app.Views.Main = Backbone.View.extend({
 
   initialize: function() {
     let self = this;
+    this.self = this;
 
     router.on('route:home', function() {
       self.prateleiraView = new app.Views.Prateleira()
@@ -95,9 +105,15 @@ app.Views.Main = Backbone.View.extend({
       self.prateleiraView.renderChilds();
     })
 
-    router.on('route:fiestas', function() {
-      self.prateleiraView.remove()
-    })
+    // router.on('route:fiestas', function() {
+    //   self.prateleiraView.remove()
+    // })
+  },
+
+  paginaDetalhe: function(model) {
+    if(this.self.prateleiraView) {
+      this.self.prateleiraView.remove()
+    }
   }
 })
 
