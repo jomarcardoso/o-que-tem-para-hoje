@@ -19,6 +19,13 @@ window.App = Backbone.View.extend({
     window.stade = '';
     window.eventoId = '';
 
+
+
+    router.on('route:detalhe', function() {
+      var model = new app.Models.Detalhe({id: window.eventoId})
+      header.paginaDetalhe(model);
+    })
+
     Backbone.history.start();
   }
 
@@ -47,16 +54,27 @@ app.Views.Header = Backbone.View.extend({
       }
     })
 
-    router.on('route:detalhe', function() {
-      if(self.bannerCarousel) {
-        self.bannerCarousel.remove()
-      }
-      self.bannerEstatic = new app.Views.Banner({model: true})
-      self.$el.prepend(self.bannerEstatic.render().$el)
-      self.bannerEstatic.renderChilds();
-      scroller()
-      console.log('oi')
-    })
+    // router.on('route:detalhe', function() {
+      // if(self.bannerCarousel) {
+      //   self.bannerCarousel.remove()
+      // }
+      // self.bannerEstatic = new app.Views.Banner({model: true})
+      // self.$el.prepend(self.bannerEstatic.render().$el)
+      // self.bannerEstatic.renderChilds();
+      // scroller()
+      // console.log('oi')
+    // })
+  },
+
+  paginaDetalhe: function(model) {
+    let self = this;
+    if(self.bannerCarousel) {
+      self.bannerCarousel.remove()
+    }
+    self.bannerEstatic = new app.Views.Banner({model: model})
+    self.$el.prepend(self.bannerEstatic.render().$el)
+    self.bannerEstatic.renderChilds();
+    scroller()
   }
 })
 

@@ -1,3 +1,5 @@
+var app = app || {};
+
 app.Routers = Backbone.Router.extend({
   routes: {
     '': 'home',

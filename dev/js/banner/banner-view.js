@@ -7,7 +7,7 @@ app.Views.Banner = Backbone.View.extend({
     if(dados.collection) {
       this.collection = new app.Collections.Banner(this.data.banners)
     } else {
-      this.model = new app.Models.Banner({id: window.eventoId})
+      this.model = dados.model
     }
   },
 
