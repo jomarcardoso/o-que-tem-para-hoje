@@ -3,8 +3,12 @@ app.Views.Banner = Backbone.View.extend({
   className: 'header__banner',
   template: _.template($('#header__banner').html()),
 
-  initialize: function() {
-    this.collection = new app.Collections.Banner(this.data.banners)
+  initialize: function(dados) {
+    if(dados.collection) {
+      this.collection = new app.Collections.Banner(this.data.banners)
+    } else {
+      this.model = new app.Models.Banner({id: window.eventoId})
+    }
   },
 
   renderOne(model) {
@@ -21,7 +25,15 @@ app.Views.Banner = Backbone.View.extend({
   },
 
   renderChilds() {
-    this.collection.each(this.renderOne, this);
+    if(this.collection) {
+      this.collection.each(this.renderOne, this);
+    } else {
+      this.renderOne(this.model)
+    }
+  },
+
+  carrossel: function() {
+    $('.header__banner__carousel').addClass('owl-carousel')
     carrossel()
   },
 
@@ -66,6 +78,14 @@ app.Views.BannerItem = Backbone.View.extend({
     var html = this.template(this.model.toJSON());
     this.$el.append(html);
     return this;
+  },
+
+  events: {
+    'click img': 'detalhe'
+  },
+
+  detalhe: function() {
+    Backbone.history.navigate('fiestas/'+ this.model.get('id'), {trigger: true})
   }
 
 })

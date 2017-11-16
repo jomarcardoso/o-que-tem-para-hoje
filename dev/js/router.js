@@ -2,7 +2,7 @@ app.Routers = Backbone.Router.extend({
   routes: {
     '': 'home',
     'fiestas': 'fiestas',
-    'fiestas/fiesta/:id': 'fiesta',
+    'fiestas/:id': 'detalhe',
     'perfil': 'perfil'
   },
 
@@ -11,6 +11,11 @@ app.Routers = Backbone.Router.extend({
   //     BannerController(this.data.banners);
   //   });
   // },
+
+  detalhe: function(id) {
+    window.eventoId = id;
+  },
+
   data: {
     banners: [
       {

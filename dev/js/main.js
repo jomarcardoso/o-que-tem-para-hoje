@@ -14,7 +14,7 @@ $(function(){
 
   scroller()
 
-  carrossel()
+  // carrossel()
 
   $('header').on('resize', scroller)
 
