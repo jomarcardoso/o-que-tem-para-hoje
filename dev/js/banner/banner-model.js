@@ -10,8 +10,7 @@ app.Models.Banner = Backbone.Model.extend({
 
   initialize: function(dados) {
     if(dados.id) {
-      console.log('passou aq')
-      this.set(window.todosEventos.eventos.filter(function(x) {
+      this.set(window.todosEventosDetalhe.eventos.filter(function(x) {
         if(x.id == dados.id) {
           return x
         }

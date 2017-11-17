@@ -46,12 +46,17 @@
     <div class="prateleira__carousel owl-carousel"></div>
   </script>
 
+  <script type="text/template" id="tpl-detalhe">
+
+  </script>
+
   <script src="vendor/underscore/underscore-min.js" charset="utf-8"></script>
   <script src="vendor/backbone/backbone-min.js" charset="utf-8"></script>
   <script src="vendor/localstorage/backbone.localStorage.min.js" charset="utf-8"></script>
   <script src="vendor/owl.carousel.min.js"></script>
   <!-- <script src="/js/requestService.js"></script> -->
 
+  <script src="/js/storage.js" charset="utf-8"></script>
   <script src="/js/main.js"></script>
   <script src="/js/app.js" charset="utf-8"></script>
   <script src="/js/router.js" charset="utf-8"></script>
@@ -64,33 +69,8 @@
   <script src="/js/detalhe/detalhe-view.js" charset="utf-8"></script>
   <script src="/js/detalhe/detalhe-model.js" charset="utf-8"></script>
 
-
-
   <script>
-  app.start({
-    banners: [
-      {
-        nome: 'oktoberfest',
-        descricao: 'uma festa bem legal',
-        img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banners_ingressos_1100x430px-2.jpg'
-      },
-      {
-        nome: 'oktoberfest',
-        descricao: 'uma festa bem legal',
-        img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banner-home.jpg'
-      },
-      {
-        nome: 'oktoberfest',
-        descricao: 'uma festa bem legal',
-        img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banners_1100x160px.jpg'
-      },
-      {
-        nome: 'oktoberfest',
-        descricao: 'uma festa bem legal',
-        img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Oktoberfest_Site_banners_1100x430px2-2.jpg'
-      }
-    ]
-  })
+    app.start()
   </script>
 
 

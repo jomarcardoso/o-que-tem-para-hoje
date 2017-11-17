@@ -41,18 +41,18 @@ function carrossel() {
 
   $('.prateleira__carousel').owlCarousel({
     autoplay: true,
-    loop:true,
+    // loop:true,
     margin:10,
-    nav:true,
+    // nav:true,
     responsive:{
       0:{
         items:1
       },
       600:{
-        items:4
+        items:2
       },
       1000:{
-        items:6
+        items:3
       }
     }
   })

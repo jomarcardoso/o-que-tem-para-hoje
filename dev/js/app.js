@@ -23,8 +23,6 @@ window.App = Backbone.View.extend({
       Backbone.history.navigate('', {trigger: true})
     })
 
-
-
     router.on('route:detalhe', function() {
       var model = new app.Models.Detalhe({id: window.eventoId})
       header.paginaDetalhe(model);
@@ -41,6 +39,7 @@ app.Views.Header = Backbone.View.extend({
   el: 'header',
 
   bannerCarousel: null,
+  bannerEstatic: null,
 
   initialize: function() {
     let self = this;
@@ -81,7 +80,7 @@ app.Views.Header = Backbone.View.extend({
       self.bannerCarousel.remove()
     }
     self.bannerEstatic = new app.Views.Banner({model: model})
-    self.$el.prepend(self.bannerEstatic.render().$el)
+    self.$el.append(self.bannerEstatic.render().$el)
     self.bannerEstatic.renderChilds();
     scroller()
   }
@@ -93,16 +92,36 @@ app.Views.Main = Backbone.View.extend({
 
   el: 'main',
 
-  prateleiraView: null,
+  prateleirasView: [],
 
   initialize: function() {
     let self = this;
     this.self = this;
 
     router.on('route:home', function() {
-      self.prateleiraView = new app.Views.Prateleira()
-      self.$el.prepend(self.prateleiraView.render().$el)
-      self.prateleiraView.renderChilds();
+
+      var filtro = {}
+
+      filtro.tipo = 'festa'
+      let prateleira1 = new app.Views.Prateleira(filtro)
+      self.$el.prepend(prateleira1.render().$el)
+      prateleira1.renderChilds();
+      self.prateleirasView.push(prateleira1)
+
+
+      filtro.tipo = 'teatro'
+      let prateleira2 = new app.Views.Prateleira(filtro)
+      self.$el.prepend(prateleira2.render().$el)
+      prateleira2.renderChilds();
+      self.prateleirasView.push(prateleira2)
+
+      filtro.tipo = 'show'
+      let prateleira3 = new app.Views.Prateleira(filtro)
+      self.$el.prepend(prateleira3.render().$el)
+      prateleira3.renderChilds();
+      self.prateleirasView.push(prateleira3)
+
+
     })
 
     // router.on('route:fiestas', function() {
@@ -111,100 +130,10 @@ app.Views.Main = Backbone.View.extend({
   },
 
   paginaDetalhe: function(model) {
-    if(this.self.prateleiraView) {
-      this.self.prateleiraView.remove()
+    self = this
+    if(self.prateleirasView.length > 0) {
+      self.prateleirasView.forEach(x => x.remove())
     }
+    // self.detalhe = new App.View.Detalhe()
   }
 })
-
-
-
-window.prateleiras = {
-  titulo: 'As festas mais próximas',
-  prateleiras: [
-    {
-      id: 1,
-      nome: 'oktoberfest',
-      descricao: 'uma festa bem legal',
-      img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banners_ingressos_1100x430px-2.jpg'
-    },
-    {
-      id: 2,
-      nome: 'oktoberfest',
-      descricao: 'uma festa bem legal',
-      img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banner-home.jpg'
-    },
-    {
-      id: 3,
-      nome: 'oktoberfest',
-      descricao: 'uma festa bem legal',
-      img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banners_1100x160px.jpg'
-    },
-    {
-      id: 4,
-      nome: 'oktoberfest',
-      descricao: 'uma festa bem legal',
-      img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Oktoberfest_Site_banners_1100x430px2-2.jpg'
-    }
-  ]
-}
-
-window.prateleiras = {
-  titulo: 'As festas mais próximas',
-  prateleiras: [
-    {
-      id: 1,
-      nome: 'oktoberfest',
-      descricao: 'uma festa bem legal',
-      img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banners_ingressos_1100x430px-2.jpg'
-    },
-    {
-      id: 2,
-      nome: 'oktoberfest',
-      descricao: 'uma festa bem legal',
-      img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banner-home.jpg'
-    },
-    {
-      id: 3,
-      nome: 'oktoberfest',
-      descricao: 'uma festa bem legal',
-      img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banners_1100x160px.jpg'
-    },
-    {
-      id: 4,
-      nome: 'oktoberfest',
-      descricao: 'uma festa bem legal',
-      img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Oktoberfest_Site_banners_1100x430px2-2.jpg'
-    }
-  ]
-}
-
-
-window.todosEventos = {
-  eventos: [
-    {
-      id: 1,
-      nome: 'oktoberfest',
-      descricao: 'uma festa bem legal',
-      img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banners_ingressos_1100x430px-2.jpg'
-    },
-    {
-      id: 2,
-      nome: 'oktoberfest',
-      descricao: 'uma festa bem legal',
-      img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banner-home.jpg'
-    },
-    {
-      id: 3,
-      nome: 'oktoberfest',
-      descricao: 'uma festa bem legal',
-      img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Banners_1100x160px.jpg'
-    },
-    {
-      id: 4,
-      nome: 'oktoberfest',
-      descricao: 'uma festa bem legal',
-      img: 'http://www.oktoberfest.org.br/wp-content/uploads/2015/10/Oktoberfest_Site_banners_1100x430px2-2.jpg'
-    }
-  ]
-}
