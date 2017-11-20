@@ -1,0 +1,38 @@
+.container {
+  max-width: 1180px;
+}
+
+
+.prateleira {
+  &__titulo {
+    color: white;
+    font-size: 50px;
+  }
+  &__carousel {
+
+  }
+}
+
+.detalhe {
+  color: white;
+
+  &-container {
+    display: grid;
+    grid-template-areas:
+    "detalhe-imagem detalhe-nome"
+    "detalhe-descricao detalhe-descricao";
+    grid-template-columns: auto 1fr;
+  }
+
+  &__imagem {
+    grid-area: detalhe-imagem;
+  }
+
+  &__nome {
+    grid-area: detalhe-nome;
+  }
+
+  &__descricao {
+    grid-area: detalhe-descricao
+  }
+}
