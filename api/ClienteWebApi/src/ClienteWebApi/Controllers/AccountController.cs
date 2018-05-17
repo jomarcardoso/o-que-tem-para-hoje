@@ -11,6 +11,9 @@ using Microsoft.Extensions.Logging;
 using ClienteWebApi.Models;
 using ClienteWebApi.Models.AccountViewModels;
 using ClienteWebApi.Services;
+using Microsoft.AspNetCore.Http.Authentication;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace ClienteWebApi.Controllers
 {
@@ -45,6 +48,30 @@ namespace ClienteWebApi.Controllers
         {
             ViewData["ReturnUrl"] = returnUrl;
             return View();
+        }
+
+        public async Task<IActionResult> LoginUser(string returnUrl)
+        {
+            const string Issuer = "https://gov.uk";
+
+            var claims = new List<Claim> {
+                new Claim(ClaimTypes.Email, "Jomar", ClaimValueTypes.String, Issuer),
+                new Claim("password", "123", ClaimValueTypes.String, Issuer)
+            };
+
+            var userIdentity = new ClaimsIdentity(claims, "Passport");
+
+            var userPrincipal = new ClaimsPrincipal(userIdentity);
+
+            await HttpContext.Authentication.SignInAsync("Cookie", userPrincipal,
+                new AuthenticationProperties
+                {
+                    ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
+                    IsPersistent = false,
+                    AllowRefresh = false
+                });
+
+            return RedirectToLocal(returnUrl);
         }
 
         //
